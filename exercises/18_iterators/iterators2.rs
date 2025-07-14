@@ -1,13 +1,16 @@
 // In this exercise, you'll learn some of the unique advantages that iterators
 // can offer.
 
+use core::{iter::{IntoIterator, Iterator}, option::Option::None};
+use std::f64::consts::E;
+
 // TODO: Complete the `capitalize_first` function.
 // "hello" -> "Hello"
 fn capitalize_first(input: &str) -> String {
     let mut chars = input.chars();
-    match chars.next() {
-        None => String::new(),
-        Some(first) => todo!(),
+  match chars.next() {
+        Some(first) =>  first.to_uppercase().collect::<String>() + &chars.as_str().to_lowercase(),
+        None => String::new()
     }
 }
 
@@ -16,6 +19,14 @@ fn capitalize_first(input: &str) -> String {
 // ["hello", "world"] -> ["Hello", "World"]
 fn capitalize_words_vector(words: &[&str]) -> Vec<String> {
     // ???
+    let mut vect_string:Vec<String> = Vec::new();
+
+   for &word in words {
+       let word = capitalize_first(word);
+       vect_string.push(word);
+   }
+
+   vect_string
 }
 
 // TODO: Apply the `capitalize_first` function again to a slice of string
@@ -23,10 +34,18 @@ fn capitalize_words_vector(words: &[&str]) -> Vec<String> {
 // ["hello", " ", "world"] -> "Hello World"
 fn capitalize_words_string(words: &[&str]) -> String {
     // ???
+    let mut emp_str = String::new();
+    for word in words {
+        let c = capitalize_first(&word);
+        emp_str.push_str(&c);
+    }
+
+    emp_str
 }
 
 fn main() {
     // You can optionally experiment here.
+
 }
 
 #[cfg(test)]

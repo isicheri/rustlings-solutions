@@ -10,10 +10,23 @@ fn factorial(num: u64) -> u64 {
     // - additional variables
     // For an extra challenge, don't use:
     // - recursion
+    if num == 0 || num == 1 {
+        1
+    }else {
+        let mut res = 1u64;
+        for i in 1..num + 1 {
+        println!("value {}",i);
+        res *= i;
+        }
+        res
+    }
+
 }
 
 fn main() {
     // You can optionally experiment here.
+   let p = factorial(4);
+   println!("{}",p);
 }
 
 #[cfg(test)]
